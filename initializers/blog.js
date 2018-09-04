@@ -5,9 +5,6 @@ module.exports = class Blog extends Initializer {
   constructor() {
     super()
     this.name = "blog"
-    this.loadPriority = 1000
-    this.startPriority = 1000
-    this.stopPriority = 1000
   }
 
   async initialize() {
