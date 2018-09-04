@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "actionhero": "19.0.2",
+    "bcrypt": "^3.0.0",
     "ioredis": "latest",
     "ws": "latest"
   },
