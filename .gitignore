@@ -9,8 +9,9 @@ locales/test-env-*
 public/javascript/ActionheroWebsocketClient.js
 public/javascript/ActionheroWebsocketClient.min.js
 
-# Node / NPM
+# Node / NPM / yarn
 npm-debug.log
+yarn-error.log
 
 # OS-specific wierdness
 .DS_Store
