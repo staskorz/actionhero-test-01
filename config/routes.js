@@ -1,7 +1,6 @@
-exports['default'] = {
-  routes: (api) => {
+exports["default"] = {
+  routes: api => {
     return {
-
       /* ---------------------
       routes.js
 
@@ -26,7 +25,6 @@ exports['default'] = {
       ]
 
       ---------------------- */
-
     }
-  }
+  },
 }

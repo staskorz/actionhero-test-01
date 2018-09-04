@@ -1,4 +1,4 @@
-let host = process.env.REDIS_HOST || '127.0.0.1'
+let host = process.env.REDIS_HOST || "127.0.0.1"
 let port = process.env.REDIS_PORT || 6379
 let db = parseInt(process.env.REDIS_DB || process.env.JEST_WORKER_ID || 0)
 let password = process.env.REDIS_PASSWORD || null
@@ -10,16 +10,21 @@ if (process.env.REDIS_URL) {
   port = parseInt(process.env.REDIS_URL.match(/redis:\/\/.*:.*@.*:(\d*)$/i)[1])
 }
 
-exports['default'] = {
-  redis: (api) => {
+exports["default"] = {
+  redis: api => {
     // konstructor: The redis client constructor method.  All redis methods must be promises
     // args: The arguments to pass to the constructor
     // buildNew: is it `new konstructor()` or just `konstructor()`?
 
-    function retryStrategy (times) {
+    function retryStrategy(times) {
       if (times === 1) {
-        const error = 'Unable to connect to Redis - please check your Redis config!'
-        if (process.env.NODE_ENV === 'test') { console.error(error) } else { api.log(error, 'error') }
+        const error =
+          "Unable to connect to Redis - please check your Redis config!"
+        if (process.env.NODE_ENV === "test") {
+          console.error(error)
+        } else {
+          api.log(error, "error")
+        }
         return 5000
       }
       return Math.min(times * 50, maxBackoff)
@@ -28,22 +33,46 @@ exports['default'] = {
     return {
       enabled: true,
 
-      '_toExpand': false,
+      _toExpand: false,
       client: {
-        konstructor: require('ioredis'),
-        args: [{ port: port, host: host, password: password, db: db, retryStrategy: retryStrategy }],
-        buildNew: true
+        konstructor: require("ioredis"),
+        args: [
+          {
+            port: port,
+            host: host,
+            password: password,
+            db: db,
+            retryStrategy: retryStrategy,
+          },
+        ],
+        buildNew: true,
       },
       subscriber: {
-        konstructor: require('ioredis'),
-        args: [{ port: port, host: host, password: password, db: db, retryStrategy: retryStrategy }],
-        buildNew: true
+        konstructor: require("ioredis"),
+        args: [
+          {
+            port: port,
+            host: host,
+            password: password,
+            db: db,
+            retryStrategy: retryStrategy,
+          },
+        ],
+        buildNew: true,
       },
       tasks: {
-        konstructor: require('ioredis'),
-        args: [{ port: port, host: host, password: password, db: db, retryStrategy: retryStrategy }],
-        buildNew: true
-      }
+        konstructor: require("ioredis"),
+        args: [
+          {
+            port: port,
+            host: host,
+            password: password,
+            db: db,
+            retryStrategy: retryStrategy,
+          },
+        ],
+        buildNew: true,
+      },
     }
-  }
+  },
 }
