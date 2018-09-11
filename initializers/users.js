@@ -55,7 +55,7 @@ module.exports = class Users extends Initializer {
       },
 
       delete: async userName => {
-        await redis.del(this.userHash, userName)
+        await redis.hdel(this.userHash, userName)
 
         const titles = await api.blog.postList(userName)
 
