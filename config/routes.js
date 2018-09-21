@@ -17,7 +17,7 @@ exports["default"] = {
     put: [{ path: "post/:userName/:title", action: "postEdit" }],
 
     delete: [
-      { path: "/user/userName", action: "userDelete" },
+      { path: "/user/:userName", action: "userDelete" },
       { path: "/comment/:userName/:title/:commentId", action: "commentDelete" },
       { path: "/post/:userName/:title", action: "postDelete" },
     ],
