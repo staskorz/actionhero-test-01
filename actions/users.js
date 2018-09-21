@@ -37,10 +37,10 @@ module.exports.userDelete = class UserDelete extends Action {
   }
 }
 
-module.exports.userList = class UserList extends Action {
+module.exports.usersList = class UsersList extends Action {
   constructor() {
     super()
-    this.name = "userList"
+    this.name = "usersList"
     this.description = "I list all the users"
     this.outputExample = {}
     this.authenticated = false
